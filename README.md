@@ -4,4 +4,4 @@
 
 ![Mockup](note-taker.JPG)
 
-URL:https://arestrepo12.github.io/weather-dashboard/
+URL:https://arestrepo12.github.io/Note-Taker/
