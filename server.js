@@ -7,6 +7,8 @@ const app = express();
 app.use(express.urlencoded({ extended: ture}));
 app.use(express.json());
 
+app.use(express.static('public')); 
+
 const allNotes = require('./Develop/data/notes.json');
 
 function createNewNote(body, notesArray) {
@@ -28,6 +30,14 @@ app.post('/api/notes', (req, res) => {
     const newNote = createNewNote(req.body, allNotes);
 
     res.json(newNote);
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './index.html'));
+});
+
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, './Develop/public/notes.html'));
 });
 
 app.listen(PORT, () => {
