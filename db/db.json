@@ -1,8 +1,17 @@
-{
-    "allNotes": [
+[
     {
-        "title":"Test Title",
-        "text":"Test text"
+        "title": "go",
+        "text": "outside",
+        "review_id": "c5b47beb-8290-4469-baa9-68869efb54a2"
+    },
+    {
+        "title": "read",
+        "text": "books",
+        "review_id": "ac9dbe5e-af17-4b23-b185-5e7c82742641"
+    },
+    {
+        "title": "shop",
+        "text": "eggs",
+        "review_id": "3a046012-738f-420f-9de2-f9c16efca381"
     }
 ]
-}

@@ -15,7 +15,6 @@
     "homepage": "https://github.com/ARestrepo12/Note-Taker#readme",
     "dependencies": {
       "express": "^4.16.4",
-      "inquirer": "^8.2.4",
-      "util": "^0.12.4"
+      "uuid":"8.3.2"
     }
   }
