@@ -11,8 +11,6 @@ router.get('/notes', (req, res) => {
             res.json(err);
         } else {
             const notes = JSON.parse(data);
-            if (!notes)
-            notes= [];
             res.json(notes);
         }
     })
@@ -26,7 +24,7 @@ router.post('/notes', (req, res) => {
             title,
             text,
             //Unique ID
-            review_id: uuidv4(),
+            id: uuidv4(),
         };
 
         fs.readFile(`./db/db.json`, (err, data) => {
@@ -35,7 +33,7 @@ router.post('/notes', (req, res) => {
                 res.json(err);
             }  else {
                 const notes = JSON.parse(data);
-                console.log("DATA: " + data);
+    
                 if (!notes) {
                     notes = [];
                     console.log("this is your first note");
@@ -65,5 +63,34 @@ router.post('/notes', (req, res) => {
     }
 });
 
+router.delete('/notes/:id', (req, res) => {
+    fs.readFile(`./db/db.json`, (err, data) => {
+        if(err) {
+            console.log("Unable to access notes.");
+            res.json(err);
+        } else {
+            const notes= JSON.parse(data);
+            if (!notes) {
+                res.send(console.log("No notest to delete"));
+            }
+            
+            let newNotes = notes.filter(note => note.id !== req.params.id);
+            const notePackage = JSON.stringify(newNotes);
+            fs.writeFile(`./db/db.json`, notePackage, (err) => {
+                if(err)
+                {
+                    console.log("Unable to store note.")
+                    res.json(err);
+                } else {
+                    const response = {
+                        status: 'sucess',
+                    };
+                    console.log(response);
+                }
+            })
+        }
+    })
+    res.send('Got a DELETE requrest at /user');
+})
 
 module.exports = router
